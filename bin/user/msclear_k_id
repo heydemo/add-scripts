@@ -1,0 +1,4 @@
+#!/bin/bash
+drush sqlq "delete from mmis_etl_processed_k_ids where k_id like '$1';"
+drush sqlq "delete content_type_si, node from content_type_si left join node using (nid) where field_etl_id_value like '$1'"
+drush sqlq "delete content_type_si_resolution, node from content_type_si_resolution left join node using (nid)  where field_rc_etl_id_value like '$1'"

@@ -1,0 +1,4 @@
+#!/bin/bash
+#-# description: Install add from source
+cd ~/code/goadd
+go install -gcflags="-N -l" ~/code/goadd/cmd/goadd

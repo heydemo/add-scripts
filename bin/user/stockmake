@@ -1,0 +1,3 @@
+#!/bin/bash
+# CXXFLAGS=-O0 
+make build --debug ARCH=x86-64-bmi2 optimize=no

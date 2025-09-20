@@ -1,0 +1,3 @@
+#!/bin/bash
+FILENAME=$(echo $1 | sed 's/[^/]*\///')
+sed "s/%%FILENAME%%/$FILENAME/g;"

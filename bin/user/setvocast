@@ -1,0 +1,22 @@
+#!/bin/bash
+#~~#
+#description: ""
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+pactl set-default-sink alsa_output.usb-Focusrite_Vocaster_Two_USB_V2MUX3N2704955-00.analog-surround-40
+pactl set-default-source alsa_input.usb-Focusrite_Vocaster_Two_USB_V2MUX3N2704955-00.multichannel-input
+

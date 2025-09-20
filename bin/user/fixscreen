@@ -1,0 +1,4 @@
+#!/bin/bash
+#-# description: Adjust monitor size using xrandr
+xrandr --output $1 --mode $2 --rate 60.00
+

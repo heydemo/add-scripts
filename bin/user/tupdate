@@ -1,0 +1,7 @@
+#!/bin/bash
+cd ~/toolbox
+git pull origin master
+git add bin
+git add -u bin
+git commit -m "Add moar commands"
+git push origin master

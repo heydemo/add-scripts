@@ -1,0 +1,2 @@
+#!/bin/bash
+drush sqlq "select name from variable;"

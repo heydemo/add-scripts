@@ -1,0 +1,4 @@
+#!/bin/bash
+for i in {0..255}; do printf "\e[48;5;${i}m\e[97m%3d\e[0m " $i; [[ $(($i % 16)) -eq 15 ]] && echo; done
+
+

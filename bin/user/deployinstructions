@@ -1,0 +1,6 @@
+#!/bin/bash
+commit=`git show | grep commit | awk '{ print $2 }'`
+link="https://gitlab.medispend.com/medispend3/medispend-clients/commit/$commit"
+deploy="h4. Deployment Instructions \n# merge client code $commit"
+echo $deploy
+echo $deploy | xclip -selection clipboard

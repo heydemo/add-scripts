@@ -1,0 +1,3 @@
+#!/bin/bash
+xrandr --output eDP-1 --off
+printf "TURNED OFF\n turn backon with...\n xrandr --output eDP-1 --auto\n"

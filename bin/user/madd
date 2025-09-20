@@ -1,0 +1,2 @@
+#!/bin/bash
+vim ~/medi/mscripts/${1}.php

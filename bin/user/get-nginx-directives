@@ -1,0 +1,3 @@
+#!/bin/bash
+curl https://nginx.org/en/docs/dirindex.html | grep -o 'href="[^"]*' | sed 's/href="//'
+

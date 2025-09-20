@@ -1,0 +1,4 @@
+#!/bin/bash
+#-# description: Print every executable in $PATH
+echo $PATH | tr ':' '\n' | xargs -I {} find {} -maxdepth 1 -executable -type f 2>/dev/null
+

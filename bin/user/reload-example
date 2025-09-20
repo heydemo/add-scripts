@@ -1,0 +1,27 @@
+#!/bin/bash
+inotifywait -m ./src -e modify |
+  while read path action file; do
+      extension="${file##*.}"
+	    basename="${file%.*}"
+      current=`date +%s%N | cut -b1-13`
+      elapsed=$((current-time))
+      window=500
+      #echo "Elapsed $elapsed"
+
+    	if [ $extension = "cpp" ] && [ $elapsed -gt $window ]; then
+          #echo "The file '$file' appeared in directory '$path' via '$action'"
+          echo "       ~~~~~~~~~~ ";
+          running_process=`pgrep $basename`
+          if [ ! -z "$running_process" ]; then
+            echo "Killing Process: $running_process"
+            kill $running_process
+          fi
+	        g++ -std=c++2a -c ./src/$file -o ./obj/$basename.o \
+          && sleep .1 \
+          && g++ -L /home/jdemott/libs/boost/boost -o ./bin/ngxparse ./obj/*.o \
+          && ./bin/ngxparse ./conf/nginx.conf --mf ./maps.txt
+          echo "       ~~~~~~~~~~ ";
+          time=`date +%s%N | cut -b1-13`
+	    fi
+    done
+~

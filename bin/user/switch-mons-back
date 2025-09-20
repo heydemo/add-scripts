@@ -1,0 +1,30 @@
+#!/bin/bash
+#~~#
+#description: ""
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+i3-msg 'workspace 9; move workspace to output eDP-1'
+i3-msg 'workspace 1; move workspace to output eDP-1'
+i3-msg 'workspace 2; move workspace to output eDP-1'
+i3-msg 'workspace 3; move workspace to output eDP-1'
+i3-msg 'workspace 4; move workspace to output eDP-1'
+i3-msg 'workspace 5; move workspace to output eDP-1'
+i3-msg 'workspace 6; move workspace to output eDP-1'
+i3-msg 'workspace 7; move workspace to output eDP-1'
+i3-msg 'workspace 8; move workspace to output eDP-1'
+i3-msg 'workspace 10; move workspace to output eDP-1'
+

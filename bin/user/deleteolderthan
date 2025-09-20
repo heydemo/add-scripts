@@ -1,0 +1,2 @@
+#!/bin/bash
+find /home/jdemott/Downloads -type f -mtime +7 -name '*.gz' -execdir rm -- '{}' +

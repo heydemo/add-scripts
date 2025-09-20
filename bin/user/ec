@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Easy commit script - stages all files and prompts for commit
+
+# Stage all files
+git add .
+
+# Show staged diff first
+echo "=== Staged changes ==="
+git diff --staged
+echo ""
+
+# Generate default commit message using claude
+default_msg=`claude -p "Give a summary of staged git changes in 20 words or less"`
+echo $default_msg
+
+# Prompt for commit message with AI-generated default
+echo -n "Commit message (default: $default_msg): "
+read commit_msg
+if [ -z "$commit_msg" ]; then
+    commit_msg="$default_msg"
+fi
+
+# Prompt to commit
+echo ""
+echo -n "Commit these changes? (Enter to accept, Ctrl+C to cancel): "
+read confirm
+
+# Commit with the message
+git commit -m "$commit_msg"

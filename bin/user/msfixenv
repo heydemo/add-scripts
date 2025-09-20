@@ -1,0 +1,5 @@
+#!/bin/bash
+drush sqlq "update system set filename = replace(filename, 'msmultidev', 'msmultilocal')"
+drush sqlq "update system set filename = replace(filename, 'msmulti.com', 'msmultilocal.com')"
+drush cc all
+#!/bin/bash

@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ -n "$1" ] && [ -n "$2" ]; then
+  ssh $1 mkdir -p .ssh
+  cat ~/.ssh/id_rsa.pub | ssh $1 'cat >> .ssh/authorized_keys'
+  echo "alias $2='ssh $1'" >> ~/toolbox/server_alias.sh
+  echo "$2='$1'" >> ~/toolbox/server_alias.sh
+  . ~/toolbox/server_alias.sh
+else 
+  echo 'Please enter username@server AND server alias'
+  nvim ~/toolbox/server_alias.sh
+fi

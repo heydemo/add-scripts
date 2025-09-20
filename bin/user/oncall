@@ -1,0 +1,3 @@
+#!/bin/bash
+#ssh -i /home/jdemott/.ssh/LightsailDefaultKey-us-east-2.pem bitnami@3.137.223.157
+ssh -i /home/jdemott/.ssh/LightsailDefaultKey-us-east-2.pem bitnami@18.224.191.193

@@ -1,0 +1,4 @@
+#!/bin/bash
+#-# description: Edit the new tab page for browser
+nvim /home/jdemott/code/start/index.html
+

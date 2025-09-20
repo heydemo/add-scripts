@@ -1,0 +1,14 @@
+#!/bin/bash
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+echo "### [${branch}](https://fourkitchens.atlassian.net/browse/${branch})
+
+
+**This PR does the following:**
+*
+
+
+## To Review
+* [ ] Checkout this PR, aquifer run local
+* [ ] Navigate to [Journal of Hospital Medicine](http://medstat.local/jhospmed)
+* [ ] 
+* [ ] " | xclip -selection clipboard

@@ -1,0 +1,2 @@
+#!/bin/bash
+drush @medstat.local uli --uid=42054

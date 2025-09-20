@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo ecryptfs-recover-private /media/jdemott/eeb92aa7-82bf-4c4c-ae68-1bd80db8c2cf/home/.ecryptfs/jdemott/.Private

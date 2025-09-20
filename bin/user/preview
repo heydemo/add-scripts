@@ -1,0 +1,4 @@
+#!/bin/bash
+filename=$(echo $1 | cut -d ':' -f1)
+linenumber=$(echo $1 | cut -d ':' -f2)
+cat $filename | /home/jdemott/.config/add/bin/core/add_core_highlight | /home/jdemott/.config/add/bin/user/hl $linenumber

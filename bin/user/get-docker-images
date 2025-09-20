@@ -1,0 +1,21 @@
+#!/bin/bash
+#~~#
+#description: ""
+#tags: []
+#promptables: []
+#
+#---#
+
+
+gcloud artifacts docker images list us-central1-docker.pkg.dev/d2-pac/agora-images
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#

@@ -1,0 +1,5 @@
+description:
+options:
+  - label: Current directory
+    value: .
+

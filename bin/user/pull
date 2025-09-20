@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "### [FSHM-${1}](https://fourkitchens.atlassian.net/browse/FSHM-${1})
+
+
+**This PR does the following:**
+*
+
+
+## To Review
+* [ ] Checkout this PR, aquifer run local
+* [ ] Navigate to [Journal of Hospital Medicine](http://medstat.local/jhospmed)
+* [ ] 
+* [ ] " | xclip -selection clipboard

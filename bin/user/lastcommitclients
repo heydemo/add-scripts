@@ -1,0 +1,5 @@
+#!/bin/bash
+commit=`git show | grep commit | awk '{ print $2 }'`
+echo https://gitlab.medispend.com/medispend3/medispend-clients/commit/$commit
+echo https://gitlab.medispend.com/medispend3/medispend-clients/commit/$commit | xclip -selection clipboard
+

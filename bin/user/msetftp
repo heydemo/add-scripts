@@ -1,0 +1,13 @@
+#!/bin/bash
+drush vset inbound_api_host opentactics.com
+drush vset outbound_api_host opentactics.com
+drush vset inbound_api_user jdemott
+drush vset inbound_api_password fn21ad68
+drush vset outbound_api_user jdemott
+drush vset outbound_api_password fn21ad68
+
+
+drush vset inbound_api_filepath /home/jdemott/Inbound
+drush vset outbound_api_filepath /home/jdemott/Outbound
+#drush vset inbound_api_archivepath /home/jdemott/Archive
+drush vset inbound_api_archivepath /home/jdemott/Inbound

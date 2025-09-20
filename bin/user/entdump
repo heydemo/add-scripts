@@ -1,0 +1,2 @@
+#!/bin/bash
+fin drush eval "print_r(entity_load($1, array($2)));"

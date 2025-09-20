@@ -1,0 +1,46 @@
+#!/bin/bash
+#~~#
+#description: ""
+#tags: []
+#promptables:
+#- name: language_extension
+#  description: File extension for source code files we are targeting - i.e. js, py,
+#    go, php
+#  type: language_extension
+#- name: directory
+#  description: The directory to search
+#  type: directory
+#
+#---#
+p_language_extension=$1;p_directory=$2;
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+# $p_language_extension — File extension for source code files we are targeting - i.e. js, py, go, php
+# $p_directory — The directory to search
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+
+
+#-# description: Count the number of lines of Go in directory and all sub-directories recursively
+
+find $2 -name "*.$1" -type f -exec cat {} + | wc -l
+
+
+
+
+
+
+
+
+
+
+
+
+

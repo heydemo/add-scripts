@@ -1,0 +1,52 @@
+#!/bin/bash
+
+#~~#
+
+# description: Connects to a bluetooth device
+# tags:
+#   - bluetooth
+#   - connect
+#   - audio
+
+# promptables:
+#   - name: btdevice
+#     display_name: bluetooth device
+#     description: the bluetooth device to which to connect.
+#     type: btdevice
+#
+# another_thing: This is a different thing entirely
+#~~#
+
+
+#---#
+p_btdevice=$1;
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+# $p_btdevice - the value of the btdevice promptable
+# $p_btdevice_autoremove - the value of the autoremove property on the btdevice promptable
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+
+
+rfkill unblock all
+bluetoothctl scan on &
+scanPID=$!
+# Remove device if autoremove is set
+if [ "$p_btdevice_autoremove" = "true" ]; then
+  echo "Removing the device..."
+  bluetoothctl remove $p_btdevice
+fi
+sleep 1
+while ! bluetoothctl trust $p_btdevice; do
+  echo "Retrying..."
+  sleep 1
+done
+bluetoothctl pair $p_btdevice
+bluetoothctl connect $p_btdevice
+kill $scanPID
+

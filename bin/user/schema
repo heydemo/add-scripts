@@ -1,0 +1,3 @@
+#!/bin/bash
+mysqldump -u root --password=4moresecure --no-data $1 | sed -e 's/^\/\*![0-9]\{5\}.*\/;$//g'
+

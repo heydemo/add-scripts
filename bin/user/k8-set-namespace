@@ -1,0 +1,2 @@
+#!/bin/bash
+k config set-context --current --namespace=$1

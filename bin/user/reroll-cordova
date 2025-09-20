@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cordova plugin save
+cordova platform remove ios
+cordova platform add ios
+cordova prepare
+

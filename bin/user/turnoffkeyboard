@@ -1,0 +1,5 @@
+#!/bin/bash
+xinput -list
+xinput set-prop 19 'Device Enabled' 0
+
+

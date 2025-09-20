@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "limit=&whereColumn=Source_File_Name&whereValues[]=$2";
+drush importr --type=si --settings_directory=us/$1 --limit="limit=&whereColumn=Source_File_Name&whereValues[]=$2"

@@ -1,0 +1,2 @@
+#/bin/bash
+mysql -u root --password='4moresecure' -e "use $1; select page_callback, page_arguments, file from menu_router where path = '$2';"; 

@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -n "$1" ]; then
+  cat ~/toolbox/bin/$1
+else
+  ls ~/toolbox/bin
+fi
+

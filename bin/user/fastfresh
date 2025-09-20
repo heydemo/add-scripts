@@ -1,0 +1,7 @@
+#!/bin/bash
+drush cc all;
+drush dumpdb --dump-dir=./db-new
+cp ./db-new/cache* ./db
+cp ./db-new/session* ./db
+
+diff -hurq db-old db-new | awk '{ print $4 }' | grep db-new | parallel --use-cpus-instead-of-cores --jobs 200% -v drush sql-query --file={}

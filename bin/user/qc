@@ -1,0 +1,11 @@
+#!/bin/bash
+shortcut=$1
+command=$2
+if [ -n "$1" ]; then
+  echo "alias ${shortcut}='$command'" >> ~/toolbox/aliases.sh
+  echo '${shortcut} will be linked to '$command'"'
+  echo "type 's' to make it immediate"
+else
+  vim ~/toolbox/aliases.sh;
+fi
+

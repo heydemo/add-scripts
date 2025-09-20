@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+const { promisify } = require("util");
+
+const fs = require("fs");
+const readFileAsync = promisify(fs.readFile); // (A)
+
+const filePath = process.argv[2] || "input-labels.txt";
+
+readFileAsync(filePath, { encoding: "utf8" }).then(text => {
+    let output =text.split('\n')
+    .filter(line => line.includes("-"))
+    .map((line, key) => {
+        return transformLine(line, key + 1);
+    }).join("\n");
+
+    console.log(output);
+});
+
+function transformLine(line, key) {
+    let parts = line.split("-");
+    let start = parts[0];
+    let end = parts[1];
+
+    return transformTime(start) + '	' + transformTime(end) + '	' + key;
+
+}
+
+function transformTime(time) {
+    var parts = time.split(":");
+    if (parts.length < 3) {
+      parts.unshift(0);
+    }
+    var hours = parts[0];
+    var minutes = parts[1];
+    var seconds = typeof parts[2] !== 'undefined' ? Number(parts[2]) : 0;
+
+    var totalSeconds = (hours * 60 * 60) + (minutes * 60) + Number(seconds);
+    return totalSeconds.toFixed(6);
+}

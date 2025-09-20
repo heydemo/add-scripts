@@ -1,0 +1,2 @@
+#!/bin/bash
+echo '/run/user/1000/gvfs/mtp:host=%5Busb%3A001%2C050%5D/Internal storage'

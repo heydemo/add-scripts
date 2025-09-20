@@ -1,0 +1,3 @@
+#!/bin/bash
+scp /home/jdemott/code/podserious/webclient/dist/*.js root@podserious.com:/var/www/podserious/webclient/dist
+

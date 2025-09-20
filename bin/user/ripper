@@ -1,0 +1,11 @@
+#!/bin/bash
+wget \
+  --recursive \
+  --page-requisites \
+  --html-extension \
+  --convert-links \
+  --restrict-file-names=windows \
+  --domains $1 \
+  --no-parent \
+  --no-check-certificate \
+  $2

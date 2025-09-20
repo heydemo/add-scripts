@@ -1,0 +1,2 @@
+#!/bin/bash
+mongodump --host iad1-c13-2.mongo.objectrocket.com:51048 -d Bliss --username blissread -o "$@"

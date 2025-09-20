@@ -1,0 +1,5 @@
+#!/bin/bash
+for file in ./*
+do
+  convert -quality 80% -format jpg $file ${file}.jpg
+done

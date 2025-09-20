@@ -1,0 +1,20 @@
+#!/bin/bash
+#~~#
+#description: Create virtual env python
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+python3 -m venv /home/jdemott/venv/$1

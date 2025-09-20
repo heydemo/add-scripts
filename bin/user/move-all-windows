@@ -1,0 +1,50 @@
+#!/bin/bash
+#~~#
+#description: Move all windows to i3 desktop
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+
+# Check if the target workspace is provided as a command-line argument
+if [ -z "$1" ]; then
+  echo "Usage: $0 <workspace_number>"
+  exit 1
+fi
+
+# Set the target workspace from the first argument
+TARGET_WORKSPACE="$1"
+
+# Ensure the provided workspace number is valid (numeric)
+if ! [[ "$TARGET_WORKSPACE" =~ ^[0-9]+$ ]]; then
+  echo "Error: Workspace number must be a positive integer."
+  exit 1
+fi
+
+# Get a list of all container IDs for visible windows
+WINDOW_IDS=$(i3-msg -t get_tree | jq -r '
+  .. | 
+  select(.type? == "con" and .window? != null) | 
+  .id
+')
+
+# Move each window to the target workspace
+for WINDOW_ID in $WINDOW_IDS; do
+  i3-msg "[con_id=$WINDOW_ID] move container to workspace $TARGET_WORKSPACE"
+done
+
+# Switch to the target workspace
+i3-msg "workspace $TARGET_WORKSPACE"
+

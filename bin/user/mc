@@ -1,0 +1,22 @@
+#!/bin/bash
+#~~#
+#description: Connect to VPN with lockdown mode enabled
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+mullvad lockdown-mode set on
+mullvad connect
+mullvad status -v

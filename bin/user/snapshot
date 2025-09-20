@@ -1,0 +1,6 @@
+#!/bin/bash
+date=`date +"%m-%d-%y"`
+filename=/home/jdemott/snapshots/snap-${date}.jpeg
+if [ ! -f $filename ]; then
+  fswebcam -r 640x480 --jpeg 85 -D 1 $filename &> /dev/null 
+fi

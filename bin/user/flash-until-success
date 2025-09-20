@@ -1,0 +1,4 @@
+#!/bin/bash
+#qmk import-keymap ~/Downloads/$1.json
+#qmk compile -kb keychron/q6/ansi -km $1
+while ! qmk flash -km $1; do sleep 1; done

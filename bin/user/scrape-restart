@@ -1,0 +1,23 @@
+#!/bin/bash
+#~~#
+#description: ""
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+sudo systemctl restart scrape-post-banger.service
+sudo systemctl restart scrape-schedule-bangers.service
+sudo systemctl restart scrape-timeline.service
+

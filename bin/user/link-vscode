@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir -p ~/toolbox/backups
+cp ~/.config/Code/User/settings.json ~/toolbox/backups
+rm ~/.config/Code/User/settings.json 
+cd ~/.config/Code/User
+ln -s ~/toolbox/config/vscode/settings.json

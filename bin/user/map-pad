@@ -1,0 +1,25 @@
+#!/bin/bash
+#~~#
+#description: Map the Wacom Intous stylus to big monitor
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+# - OLD commands for wacom Intuos BT S Pen and Pad
+#xsetwacom set "Wacom Intuos BT S Pen stylus" MapToOutput "DP-1"
+#xsetwacom set "Wacom Intuos BT S Pad pad" Button 1 "key F9"
+#xsetwacom set "Wacom Intuos BT S Pad pad" Button 2 "key shift F9"
+#xsetwacom set "Wacom Intuos BT S Pad pad" Button 3 "key F8"
+#xsetwacom set "Wacom Intuos BT S Pad pad" Button 4 "key shift F8"

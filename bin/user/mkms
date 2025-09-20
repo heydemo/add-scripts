@@ -1,0 +1,35 @@
+#!/bin/bash
+sitename=${1}.msmultilocal.com
+dirname=/var/www/medi-clients/${1}.msmultilocal.com
+
+cat ~/toolbox/mstemplate > /etc/apache2/sites-available/${sitename}.conf
+sed -i "s/CLIENT/${1}/g" /etc/apache2/sites-available/${sitename}.conf
+echo "created $filename" 
+sudo a2ensite $sitename
+sudo service apache2 reload
+sudo chown :jdemott /etc/hosts
+sudo chmod g+w /etc/hosts
+echo "127.0.0.1 ${sitename}" >> /etc/hosts
+mysql -u root --password='4moresecure' -e "create database if not exists ${1}"
+sudo cp -r /var/www/medi-clients/template $dirname
+sudo mkdir -p ${dirname}/files
+sudo mkdir -p ${dirname}/files/tmp
+sudo mkdir -p ${dirname}/files/js
+sudo mkdir -p ${dirname}/files/css
+sudo chmod -R g+w ${dirname}/files
+sudo chmod -R u+wr ${dirname}
+sudo chown -R jdemott:www-data ${dirname}
+sudo chmod -R g+rx ${dirname}
+sed -i "s/CLIENT/${1}/g" ${dirname}/local.settings.php
+
+cd $dirname
+git reset --hard
+git checkout $1
+git pull origin $1
+cd /var/www/medi/docroot/sites
+ln -s /var/www/medi-clients/${1}.msmultilocal.com
+cd /var/www/medi/docroot/sites/${1}.msmultilocal.com
+ql ${1}
+drush cc all; drush cc all
+
+#mysql -u root --password='4moresecure' < /var/www/${sitename}/*.sql

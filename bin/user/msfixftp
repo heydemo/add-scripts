@@ -1,0 +1,14 @@
+#!/bin/bash
+/home/jdemott/olddrush/drush vset inbound_api_host 127.0.0.1;
+/home/jdemott/olddrush/drush vset inbound_api_user 'cumberland';
+/home/jdemott/olddrush/drush vset inbound_api_password 'cumberland';
+/home/jdemott/olddrush/drush vset inbound_api_archivepath '/Inbound';
+/home/jdemott/olddrush/drush vset inbound_concur_api_host 127.0.0.1
+/home/jdemott/olddrush/drush vset inbound_concur_api_user "cumberland"
+/home/jdemott/olddrush/drush vset inbound_concur_api_password "cumberland"
+/home/jdemott/olddrush/drush vset inbound_concur_api_filepath "/Inbound"
+/home/jdemott/olddrush/drush vset inbound_concur_api_archivepath "/Inbound"
+
+/home/jdemott/olddrush/drush vset outbound_api_host 127.0.0.1;
+/home/jdemott/olddrush/drush vset outbound_api_user 'cumberland';
+/home/jdemott/olddrush/drush vset outbound_api_password 'cumberland';

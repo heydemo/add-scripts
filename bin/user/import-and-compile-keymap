@@ -1,0 +1,3 @@
+#!/bin/bash
+qmk import-keymap ~/Downloads/$1.json
+qmk compile -kb keychron/q6/ansi -km $1

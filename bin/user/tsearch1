@@ -1,0 +1,12 @@
+#!/bin/bash
+COMMAND=$(for file in /home/jdemott/.config/add/bin/user/*; do
+  if [ -f "$file" ]; then
+    head -n 100 "$file" | awk -v filename="$file" '{print filename ": " NR ": " $0}'
+  fi
+done | fzf --delimiter=':' --with-nth=1 --ansi --preview="preview {}" --bind "shift-up:preview-page-up,shift-down:preview-page-down")
+
+COMMAND=$(echo "$COMMAND" | cut -d ':' -f1)
+echo "command is $COMMAND"
+#eval "/home/jdemott/toolbox/bin/$COMMAND"
+
+

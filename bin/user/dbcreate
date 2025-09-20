@@ -1,0 +1,2 @@
+#/bin/bash
+mysql -u root --password='wCpZPF9F' -e "create database $1; use $1; create user $1 identified by 'fn21ad68'; grant all on * to $1@localhost identified by 'fn21ad68'"; 

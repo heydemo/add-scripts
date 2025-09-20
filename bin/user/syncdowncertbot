@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -ar root@app.bliss31.com:/etc/letsencrypt /home/jdemott/bliss-backups

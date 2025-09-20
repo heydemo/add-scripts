@@ -1,0 +1,4 @@
+#!/bin/bash
+#-# description: Get go code to wait for the debugger and copy to clipboard
+
+echo -e "if os.Getenv(\"ADD_DEBUG\") == \"true\" {\n    fmt.Println(\"Waiting for debugger to attach. Press ENTER to continue...\")\n    fmt.Printf(\"Current Process ID: %d\", os.Getpid())\n    bufio.NewReader(os.Stdin).ReadBytes('\\n')\n}" | xclip -selection clipboard

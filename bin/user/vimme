@@ -1,0 +1,5 @@
+#!/bin/bash
+#nvim -p /home/jdemott/.config/nvim/init.lua /home/jdemott/.config/nvim/lua/includes/* /home/jdemott/.config/nvim/after/plugin/*
+cd /home/jdemott/.config/nvim
+nvim .
+

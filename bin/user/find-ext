@@ -1,0 +1,20 @@
+#!/bin/bash
+# find-ext: Find files with a specific extension in a directory tree
+# Usage: find-ext dir extension
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 directory extension"
+    exit 1
+fi
+
+EXT=$1
+
+for dir in ./*; do
+    if [ -d "$dir" ]; then  # if it's a directory
+        file=$(find "$dir" -type f -name "*\.$EXT" -print -quit)
+        if [ -n "$file" ]; then
+            echo $dir
+        fi
+    fi
+done
+

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Strip trailing spaces from one or more files
+# Usage: ./sts <filename1> [filename2] [filename3] ...
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <filename1> [filename2] [filename3] ..."
+    echo "Strip trailing spaces from the specified file(s)"
+    exit 1
+fi
+
+# Process each file
+for file in "$@"; do
+    if [ ! -f "$file" ]; then
+        echo "Error: File '$file' not found - skipping"
+        continue
+    fi
+
+    # Generate unique backup filename
+    backup_num=1
+    while [ -f "/tmp/sts-back-$backup_num" ]; do
+        ((backup_num++))
+    done
+
+    # Create backup
+    cp "$file" "/tmp/sts-back-$backup_num"
+
+    # Strip trailing spaces
+    sed -i 's/[[:space:]]*$//' "$file"
+
+    echo "Trailing spaces stripped from '$file'"
+    echo "Backup saved as '/tmp/sts-back-$backup_num'"
+done

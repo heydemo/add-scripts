@@ -1,0 +1,5 @@
+sudo chown -R jdemott:www-data .
+sudo chmod -R u+rwx .
+sudo chmod -R g+rx .
+sudo chown -R :www-data files
+sudo chmod -R g+wrx files

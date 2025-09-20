@@ -1,0 +1,7 @@
+#!/bin/bash
+# If highlight executable exists
+if [ -x "$(command -v highlight)" ]; then
+    # Add highlight to PATH
+    # moria, baycomb, maroloccio, nightshimmer
+    highlight -O truecolor -S bash -s baycomb
+fi

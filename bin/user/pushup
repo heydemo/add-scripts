@@ -1,0 +1,4 @@
+#!/bin/bash
+#push current branch
+git push origin HEAD
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo su
+killall -9 adb
+adb start-server

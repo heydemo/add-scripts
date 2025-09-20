@@ -1,0 +1,2 @@
+#!/bin/bash
+git log --branches --not --remotes --no-walk --decorate --oneline

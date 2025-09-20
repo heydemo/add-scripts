@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+import re
+import sys
+
+def read_and_prompt(filename):
+    with open(filename, 'r') as f:
+        content = f.read()
+
+    print("\n\n")
+    print(content)
+    print("\n\n")
+
+    variables = re.findall("{{(.*?)}}", content)
+    for var in variables:
+        value = input(f"Enter value for {var}: ")
+        content = content.replace(f"{{{{{var}}}}}", value)
+    
+    print("\n\n")
+    print(content)
+
+if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print("Usage: tempme <filename>")
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    read_and_prompt(filename)
+

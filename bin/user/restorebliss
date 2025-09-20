@@ -1,0 +1,6 @@
+#!/bin/bash
+mongorestore --drop -d Bliss ./Bliss
+mongo dev --eval 'db.dev.getCollection("_User").update(   { },   {     $set: { "_hashed_password": "$2a$10$vR9it8dfws3AdYDdWKVPMO.ABCNKmUkV5txraWR1cuqWryA3N0ZHi" }   },   {     multi: true   } );'
+beep
+
+

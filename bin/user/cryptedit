@@ -1,0 +1,51 @@
+#!/bin/bash
+#~~#
+#description: ""
+#tags: []
+#promptables: []
+#
+#---#
+
+# Save as ~/bin/cryptedit and chmod +x ~/bin/cryptedit
+
+set -euo pipefail
+
+FILE="$1"
+TMP_DIR=$(mktemp -d /dev/shm/cryptedit.XXXXXX)
+TMP_FILE="$TMP_DIR/$(basename "$FILE").decrypted"
+
+read -s -p "Enter password: " PASSWORD
+echo
+
+if [[ -f "$FILE" ]]; then
+    openssl enc -aes-256-cbc -pbkdf2 -d -salt -in "$FILE" -out "$TMP_FILE" -pass pass:"$PASSWORD" || {
+        echo "Decryption failed"
+        rm -rf "$TMP_DIR"
+        exit 1
+    }
+else
+    touch "$TMP_FILE"
+fi
+
+function cleanup {
+    if [[ -f "$TMP_FILE" ]]; then
+        openssl enc -aes-256-cbc -pbkdf2 -salt -in "$TMP_FILE" -out "$FILE" -pass pass:"$PASSWORD"
+        rm -rf "$TMP_DIR"
+    fi
+}
+trap cleanup EXIT
+
+nvim "$TMP_FILE"
+
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#

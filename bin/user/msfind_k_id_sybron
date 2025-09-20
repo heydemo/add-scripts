@@ -1,0 +1,3 @@
+#!/bin/bash
+drush sqlq "select nid, field_etl_id_value from content_type_si where field_etl_id_value like '%$1%'"
+drush sqlq "select nid, field_rc_etl_id_value from content_type_si_resolution where field_rc_etl_id_value like '%$1%'"

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+####
+# Split MySQL dump SQL file into one file per table
+# based on http://blog.tty.nl/2011/12/28/splitting-a-database-dump
+####
+
+if [ $# -ne 1 ] ; then
+  echo "USAGE $0 DUMP_FILE"
+fi
+
+csplit -s -ftable $1 "/-- Table structure for table/" {*}
+mv table00 head
+
+for FILE in `ls -1 table*`; do
+      NAME=`head -n1 $FILE | cut -d$'\x60' -f2`
+      cat head $FILE > "$NAME.sql"
+done
+
+#rm head table*

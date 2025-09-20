@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -n "$1" ]; then
+  git clone git@heydemo.sourcerepo.com:heydemo/$1.git $2
+else
+  echo 'add remote:  git remote add git@heydemo.sourcerepo.com:heydemo/[REPO_NAME].git'
+  echo '     clone:  git clone git@heydemo.sourcerepo.com:heydemo/[REPO_NAME].git location'
+  echo 'use sr REPO_NAME LOCATION to clone from sourcerepo'
+fi

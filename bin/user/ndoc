@@ -1,0 +1,4 @@
+#!/bin/bash
+selection=`cat /home/jdemott/code/nginx-directives.txt | fzf`
+url="https://nginx.org/en/docs/${selection}"
+open $url > /dev/null 2>&1

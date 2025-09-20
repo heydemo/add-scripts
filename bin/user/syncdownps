@@ -1,0 +1,7 @@
+#!/bin/bash
+ssh root@podserious.com 'mongodump -d podserious -o /root/db-backups'
+ssh root@podserious.com 'tar czf /root/db-backups/podserious-dump.tar.gz -C /root/db-backups podserious'
+scp root@podserious.com:/root/db-backups/podserious-dump.tar.gz /home/jdemott/db-backups
+tar xvf /home/jdemott/db-backups/podserious-dump.tar.gz -C /home/jdemott/db-backups
+mongorestore -d podserious --drop /home/jdemott/db-backups/podserious
+

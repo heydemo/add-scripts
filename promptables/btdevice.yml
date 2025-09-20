@@ -1,0 +1,40 @@
+- label: linkbuds
+  value: 80:99:E7:A8:7D:1A
+  props:
+    autoremove: true
+- label: headset
+  value: 30:50:75:10:49:CB
+  props:
+    autoremove: true
+- label: air pods
+  value: 24:95:2F:AE:FB:95
+  props:
+    autoremove: true
+- label: headset poly
+  value: 38:5C:76:AE:73:66
+  props:
+    autoremove: true
+- label: speaker
+  value: 00:19:01:C0:BA:58
+  props:
+    autoremove: true
+- label: keyboard
+  value: F4:73:35:7D:A0:63
+  props:
+    autoremove: true
+- label: keyboard 2
+  value: DC:2C:26:2F:7E:4A
+  props:
+    autoremove: true
+- label: manta headphones
+  value: 00:00:AB:CD:B4:93
+  props:
+    autoremove: true
+- label: vertical mouse
+  value: D0:33:97:16:68:69
+  props:
+    autoremove: true
+- label: Sonos
+  value: C4:38:75:95:80:40
+  props:
+    autoremove: true

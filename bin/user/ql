@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ -n "$1" ]; then
+  dirpath=`pwd`
+  echo "export $1=$dirpath" >> ~/toolbox/directory_shortcuts.sh
+  echo "$1 is now linked to $dirpath"
+  source ~/toolbox/directory_shortcuts.sh
+else
+  nvim ~/toolbox/directory_shortcuts.sh;
+  source ~/toolbox/directory_shortcuts.sh
+fi

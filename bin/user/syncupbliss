@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/jdemott/code/bliss-local-dev/code/bliss-cordova
+tar czf - www | ssh root@162.243.83.248 "cat > /root/www.tar.gz"

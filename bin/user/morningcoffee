@@ -1,0 +1,11 @@
+#!/bin/bash
+#vim -p $HOME/Dropbox/gtd/*
+
+cd /home/jdemott/gtd
+gvim -u NONE -N --disable-sound -p * &
+
+#rescuetime
+#wmctrl -r GVIM -e 1,20,30,2000,2000&
+#today=`date +%m-%d-%Y`
+#gvim /home/jdemott/newme/dietlog/dietlog-$today &
+#xchat

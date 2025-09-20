@@ -1,0 +1,6 @@
+#!/bin/bash
+#-# description: write zero to ptrace_scope in order to fix problem attaching debugger to a running process
+
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+
+

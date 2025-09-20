@@ -1,0 +1,2 @@
+#!/bin/bash
+wget -r -e robots=off --no-check-certificate --reject '*.css,*.ico,*.txt,*.gif,*.jpg,*.jpeg,*.png,*.mp3,*.pdf,*.tgz,*.flv,*.avi' $1

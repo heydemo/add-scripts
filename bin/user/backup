@@ -1,0 +1,5 @@
+#!/bin/bash
+#-# description: Backup files / directories to ~/backup
+
+mkdir -p ~/backup
+mv $@ ~/backup

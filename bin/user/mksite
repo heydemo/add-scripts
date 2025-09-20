@@ -1,0 +1,20 @@
+#!/bin/bash
+sitename=$1
+filename="/etc/apache2/sites-available/${sitename}.local.conf"
+
+cat ~/toolbox/sitetemplate > $filename
+sed -i "s/NAME/${sitename}/g" $filename 
+echo "created $filename" 
+sudo a2ensite ${sitename}.local
+sudo service apache2 reload
+echo "127.0.0.1   ${sitename}.local" >> /etc/hosts
+mysql -u root --password='4moresecure' -e "create database if not exists ${sitename}"
+mkdir /var/www/${sitename}
+sudo chown -R jdemott:www-data /var/www/${sitename}
+sudo chmod -R g+rx /var/www/${sitename}
+sudo chmod -R g+w /var/www/${sitename}/sites/default/files
+sudo chmod -R u+wr /var/www/${sitename}
+
+#mysql -u root --password='4moresecure' < /var/www/${sitename}/*.sql
+
+

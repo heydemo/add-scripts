@@ -1,0 +1,2 @@
+#!/bin/bash
+aws s3 cp $1 s3://podserious-dev/$1

@@ -1,0 +1,4 @@
+#!/bin/bash
+number=`ls -l selfies | wc -l`;
+number =  + $(($number + 1))1;
+fswebcam --no-title --no-timestamp --no-banner selfies/${number}.jpg

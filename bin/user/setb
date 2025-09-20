@@ -1,0 +1,32 @@
+#!/bin/bash
+#~~#
+#description: Sets brightness for default display
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+
+# Check if brightness level is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <brightness level (0.1 - 1.0)>"
+    exit 1
+fi
+
+# Get the current default display
+DISPLAY_NAME=$(xrandr --current | grep " connected" | awk '{print $1}')
+
+# Set the brightness
+xrandr --output "$DISPLAY_NAME" --brightness "$1"
+``

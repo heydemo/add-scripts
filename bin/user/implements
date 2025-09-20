@@ -1,0 +1,2 @@
+#!/bin/bash
+drush eval "print_r(module_implements('$1', TRUE));"

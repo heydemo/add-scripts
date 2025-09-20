@@ -1,0 +1,2 @@
+#!/bin/sh
+node /var/www/my_node_modules/gitter/index.js

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+IFS= read -d '' input_json << EOF
+$(cat)
+EOF
+
+echo $input_json | jq
+#echo "We have input_json"
+#echo "$input_json"
+
+#echo "Enter the key or value you want to search:"
+#read -r search_key
+search_key="PublicIp"
+ 
+#echo "Matching paths and values:"
+#echo "$input_json" | jq -r --arg search_key "$search_key" 'paths as $p | select(getpath($p) == $search_key or $p[-1] == $search_key) | "\(.[:-1] | join(".")) == \(getpath(.))"'
+
+# Print all jq paths matching the search key 
+echo "$input_json" | jq -r --arg search_key "$search_key" 'paths as $p | select(getpath($p) == $search_key or $p[-1] == $search_key) | "\(.[:-1] | join("."))"'
+

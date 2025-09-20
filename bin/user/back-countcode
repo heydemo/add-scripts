@@ -1,0 +1,17 @@
+#!/bin/bash
+#-# description: Count the number of lines of Go in directory and all sub-directories recursively
+
+find $2 -name "*.$1" -type f -exec cat {} + | wc -l
+
+
+
+
+
+
+
+
+
+
+
+
+

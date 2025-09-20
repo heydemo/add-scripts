@@ -1,0 +1,4 @@
+#!/bin/bash
+#-# description: Find with a maxdepth of 3 in current dir
+#-# tags: find
+find . -maxdepth 3 -type f -name "$1"

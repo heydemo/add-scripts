@@ -1,0 +1,2 @@
+#!/bin/bash
+idevice_id -l

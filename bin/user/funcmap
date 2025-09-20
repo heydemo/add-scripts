@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "<?php 
+" > $1.map
+
+grep -n 'function ' $1 >> $1.map
+

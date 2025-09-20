@@ -1,0 +1,14 @@
+#!/bin/bash
+download_directory="/home/jdemott/Downloads";
+old_directory="OLD"
+#Make sure we have our directories
+if [ ! -d "$download_directory" ]; then
+  mkdir $download_directory;
+fi
+cd $download_directory
+
+if [ ! -d "$old_directory" ]; then
+  mkdir $old_directory;
+fi
+
+find -maxdepth 1 -type f -mtime +3 -exec mv {} $old_directory \;

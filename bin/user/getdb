@@ -1,0 +1,13 @@
+#!/bin/bash
+CLIENT=$1
+ssh jdemott@msmultidev.com "~/dumpclient.sh ms_${CLIENT}_dev";
+scp jdemott@msmultidev.com:~/ms_${CLIENT}_dev.tar.gz /home/jdemott/mmisdump
+cd /home/jdemott/mmisdump
+tar xvf ms_${CLIENT}_dev.tar.gz 
+mysql -u root --password='4moresecure' -e "create database if not exists ${CLIENT}"
+mysql -u root --password='4moresecure' ${CLIENT} < ms_${CLIENT}_dev.sql
+mysql -u root --password='4moresecure' ${CLIENT} < /home/jdemott/mmisdump/fix-db.sql
+
+cd /var/www/medi/docroot/sites/${CLIENT}.msmultilocal.com
+drush cc all; drush cc all; drush uli; drush cc all
+drush sql-dump > /home/jdemott/mmisdump/${CLIENT}.sql

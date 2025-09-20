@@ -1,0 +1,4 @@
+#!/bin/bash
+pwd
+ls tests/${1}-test.js
+mocha ./tests/${1}-test.js -w --compilers js:babel-core/register

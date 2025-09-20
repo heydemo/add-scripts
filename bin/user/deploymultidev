@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -n "$1" ] && [ -n "$2" ]; then
+  aquifer deploy-git -m "$1" -b $2
+else
+  echo 'Please enter a message description, and then the branch name'
+fi

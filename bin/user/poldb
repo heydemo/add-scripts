@@ -1,0 +1,21 @@
+#!/bin/bash
+#~~#
+#description: Connect to pol database
+#tags: []
+#promptables: []
+#
+#---#
+
+
+
+# PROMPTABLE USAGE GUIDE
+#
+# The following variables can be used in your script below.
+#
+#
+# For more infomation see https://github.com/heydemo/add
+#
+#---#
+#~~#
+
+psql -U postgres -h localhost -p 7777 -d pol

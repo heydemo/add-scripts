@@ -1,0 +1,2 @@
+#!/bin/bash
+mysql -u root --password=4moresecure -e 'SHOW FULL TABLES IN ${1} WHERE TABLE_TYPE LIKE "VIEW"';

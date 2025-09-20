@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+map-pad
+# Mayhaps need to add:
+xrandr --auto
+
+echo "Wait for it..."
+sleep 1
+xrandr
+
+xrandr --output DP-1 --mode 3840x2160 --rate 60 --left-of eDP-1
+xrandr --output DP-1 --mode 2560x1440 --rate 60 --primary
+
+
+xrandr --addmode DP-1 2560x1440
+
+
+xrandr --output eDP-1 --mode 1440x810 --rate 60
+xrandr --output eDP-1 --mode 1920x1200 --rate 60
+
+
+#echo "Let's try it again!"
+#sleep 1
+#xrandr
+#
+#xrandr --output DP-1 --mode 3840x2160 --rate 60 --left-of eDP-1
+#xrandr --output DP-1 --mode 2560x1440 --rate 60 --primary
+#
+#
+#xrandr --addmode DP-1 2560x1440
+#
+#
+#xrandr --output eDP-1 --mode 1440x810 --rate 60
+#xrandr --output eDP-1 --mode 1920x1200 --rate 60
+
+switch-mons
+map-pad

@@ -1,0 +1,2 @@
+#!/bin/bash
+cleansubtitles *.srt | uniquewords | uniq | sort -R

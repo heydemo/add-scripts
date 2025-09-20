@@ -1,0 +1,9 @@
+#!/bin/bash
+CLIENT=$1;
+ssh jdemott@msmultidev.com "~/getfiles.sh $CLIENT"
+scp jdemott@msmultidev.com:~/${CLIENT}-files.tar.gz /var/www/medi-clients/${CLIENT}.msmultilocal.com/files 
+cd /var/www/medi-clients/${CLIENT}.msmultilocal.com/files
+tar xvf ${CLIENT}-files.tar.gz 
+cd ..
+sudo chmod -R ug+wrx files
+sudo chown -R jdemott:www-data files

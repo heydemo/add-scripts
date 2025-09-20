@@ -1,0 +1,25 @@
+#! /bin/bash
+dname=$1
+
+cat <<- _EOF_
+<VirtualHost *:80>
+        ServerAdmin admin@opentactics.com
+        ServerName $dname 
+        
+        DirectoryIndex index.php
+        DocumentRoot /var/www/$dname/htdocs
+
+    <Directory />
+        AllowOverride All
+    </Directory>
+        #CGI Directory
+        ScriptAlias /cgi-bin /var/www/$dname/cgi-bin
+        <Location /cgi-bin>
+                  Options +ExecCGI
+        </Location>
+
+        #Logfiles
+        ErrorLog /var/www/$dname/logs/error.log
+        CustomLog /var/www/$dname/logs/access.log combined
+</VirtualHost>
+_EOF_

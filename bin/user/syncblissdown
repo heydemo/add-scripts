@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -ar root@45.55.36.10:/root/backups/ /home/jdemott/bliss-backups

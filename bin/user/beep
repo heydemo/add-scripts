@@ -1,0 +1,3 @@
+#!/bin/bash
+which mpg123 > /dev/null || sudo apt install mpg321
+mpg123 ~/toolbox/pop.mp3 &> /dev/null

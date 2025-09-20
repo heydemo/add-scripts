@@ -1,0 +1,2 @@
+#!/bin/bash
+drush @medstat.local mi JHMArticleNode --idlist=JHM2544
