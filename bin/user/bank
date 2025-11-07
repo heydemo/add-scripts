@@ -6,8 +6,7 @@
 #
 #---#
 
-
-gcloud artifacts docker tags list us-central1-docker.pkg.dev/d2-pac/agora-images
+cryptedit /home/jdemott/pac/finance/amalgamated/info.txt
 
 
 # PROMPTABLE USAGE GUIDE

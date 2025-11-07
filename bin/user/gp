@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Static project list file location
+PROJECT_LIST="$HOME/.config/gcp_projects.txt"
+PROJECT_DIR="$(dirname "$PROJECT_LIST")"
+
+# Create config directory if it doesn't exist
+mkdir -p "$PROJECT_DIR"
+
+# Handle --list parameter (display projects from GCP)
+if [ "$1" == "--list" ]; then
+    gcloud projects list --format="table(projectId,name)"
+    exit 0
+fi
+
+# Handle --edit parameter (edit the static list)
+if [ "$1" == "--edit" ]; then
+    nvim "$PROJECT_LIST"
+    exit 0
+fi
+
+# Initialize static list if it doesn't exist
+if [ ! -f "$PROJECT_LIST" ]; then
+    echo "No project list found. Fetching from GCP to initialize..."
+    gcloud projects list --format="table(projectId,name)" > "$PROJECT_LIST"
+    echo "Project list created at: $PROJECT_LIST"
+    echo "You can edit it with: gp --edit"
+    sleep 2
+fi
+
+# Get current project for header
+current_project=$(gcloud config get project 2>/dev/null)
+
+# Use static project list for fzf selection
+selected_project=$(tail -n +2 "$PROJECT_LIST" | fzf --header="Current project: $current_project" | awk '{print $1}')
+
+# Check if a project was selected
+if [ -z "$selected_project" ]; then
+    echo "No project selected. Exiting."
+    exit 1
+fi
+
+# Set the selected project as current
+echo "Setting project to: $selected_project"
+gcloud auth application-default set-quota-project "$selected_project"
+gcloud config set project "$selected_project"

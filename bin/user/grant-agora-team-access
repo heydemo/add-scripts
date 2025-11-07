@@ -7,7 +7,11 @@
 #---#
 
 
-gcloud artifacts docker tags list us-central1-docker.pkg.dev/d2-pac/agora-images
+for repo in $(gh repo list d2pac --json name -q '.[].name'); do \
+  gh api -X PUT /orgs/d2pac/teams/agora/repos/d2pac/$repo -f permission=push; \
+done
+
+
 
 
 # PROMPTABLE USAGE GUIDE

@@ -25,6 +25,7 @@ p_btdevice=$1;
 #---#
 #~~#
 
+p_btdevice=AC:3E:B1:95:AE:2F
 
 
 rfkill unblock all

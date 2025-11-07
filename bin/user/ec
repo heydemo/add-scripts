@@ -5,25 +5,30 @@
 # Stage all files
 git add .
 
-# Show staged diff first
-echo "=== Staged changes ==="
-git diff --staged
-echo ""
+# Get the diff of all changes
+changes=$(git diff --staged)
 
-# Generate default commit message using claude
-default_msg=`claude -p "Give a summary of staged git changes in 20 words or less"`
-echo $default_msg
-
-# Prompt for commit message with AI-generated default
-echo -n "Commit message (default: $default_msg): "
-read commit_msg
-if [ -z "$commit_msg" ]; then
-    commit_msg="$default_msg"
+if [ -z "$changes" ]; then
+    echo "No changes to commit"
+    exit 0
 fi
 
-# Prompt to commit
+# Show staged changes
+echo "=== Staged changes ==="
+echo "$changes"
 echo ""
-echo -n "Commit these changes? (Enter to accept, Ctrl+C to cancel): "
+
+# Generate terse, one-line commit message using Claude
+echo "Generating commit message..."
+commit_msg=$(claude -p "Summarize these git changes into a single terse commit message (max 50 chars, imperative mood, no quotes): $changes" | head -n 1 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
+# Show generated message
+echo ""
+echo "Suggested commit message: $commit_msg"
+echo ""
+
+# Prompt to commit
+echo -n "Commit with this message? (Enter to accept, Ctrl+C to cancel): "
 read confirm
 
 # Commit with the message

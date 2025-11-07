@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Ensure we're in a git repository
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo "Error: Not in a git repository"
+    exit 1
+fi
+
+# Check if main branch exists
+if ! git show-ref --verify --quiet refs/heads/main; then
+    echo "Error: 'main' branch does not exist"
+    exit 1
+fi
+
+# Get current branch
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# If not on main, checkout main
+if [ "$CURRENT_BRANCH" != "main" ]; then
+    echo "Switching to main branch..."
+    git checkout main
+fi
+
+# Get all local branches that are fully merged into main
+MERGED_BRANCHES=$(git branch --merged main | grep -v "^\*" | grep -v "main" | sed 's/^[ \t]*//')
+
+if [ -z "$MERGED_BRANCHES" ]; then
+    echo "No branches to delete. All local branches have unmerged commits."
+    exit 0
+fi
+
+echo "The following branches are fully merged into main and will be deleted:"
+echo "$MERGED_BRANCHES"
+echo ""
+read -p "Continue? (y/n) " -n 1 -r
+echo ""
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "$MERGED_BRANCHES" | while read -r branch; do
+        if [ -n "$branch" ]; then
+            echo "Deleting branch: $branch"
+            git branch -d "$branch"
+        fi
+    done
+    echo "Done!"
+else
+    echo "Aborted."
+fi

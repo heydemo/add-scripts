@@ -1,0 +1,71 @@
+#!/bin/bash
+
+set -e
+
+ENV_NAME=""
+PYTHON_VERSION=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --name)
+            ENV_NAME="$2"
+            shift 2
+            ;;
+        *)
+            PYTHON_VERSION="$1"
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$ENV_NAME" ]; then
+    ENV_NAME=$(basename "$(pwd)")
+fi
+
+echo "Setting up Python virtual environment: $ENV_NAME"
+
+if [ -n "$PYTHON_VERSION" ]; then
+    echo "Using Python version: $PYTHON_VERSION"
+    PYENV_VERSION="$PYTHON_VERSION"
+else
+    echo "Using latest available Python version"
+    PYENV_VERSION=$(pyenv versions --bare | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)
+    if [ -z "$PYENV_VERSION" ]; then
+        echo "No Python versions found in pyenv. Please install a Python version first."
+        echo "Example: pyenv install 3.11.0"
+        exit 1
+    fi
+    echo "Latest Python version found: $PYENV_VERSION"
+fi
+
+if pyenv versions | grep -q "$ENV_NAME"; then
+    echo "Virtual environment '$ENV_NAME' already exists"
+else
+    echo "Creating virtual environment '$ENV_NAME' with Python $PYENV_VERSION"
+    pyenv virtualenv "$PYENV_VERSION" "$ENV_NAME"
+fi
+
+echo "Setting '$ENV_NAME' as local Python environment for this directory"
+pyenv local "$ENV_NAME"
+
+echo
+echo "████████╗██╗  ██╗███████╗    ███████╗███╗   ██╗██╗   ██╗"
+echo "╚══██╔══╝██║  ██║██╔════╝    ██╔════╝████╗  ██║██║   ██║"
+echo "   ██║   ███████║█████╗      █████╗  ██╔██╗ ██║██║   ██║"
+echo "   ██║   ██╔══██║██╔══╝      ██╔══╝  ██║╚██╗██║╚██╗ ██╔╝"
+echo "   ██║   ██║  ██║███████╗    ███████╗██║ ╚████║ ╚████╔╝ "
+echo "   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚══════╝╚═╝  ╚═══╝  ╚═══╝  "
+echo
+echo "    ██╗███████╗    ██████╗ ███████╗ █████╗ ██████╗ ██╗   ██╗"
+echo "    ██║██╔════╝    ██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗ ██╔╝"
+echo "    ██║███████╗    ██████╔╝█████╗  ███████║██║  ██║ ╚████╔╝ "
+echo "    ██║╚════██║    ██╔══██╗██╔══╝  ██╔══██║██║  ██║  ╚██╔╝  "
+echo "    ██║███████║    ██║  ██║███████╗██║  ██║██████╔╝   ██║   "
+echo "    ╚═╝╚══════╝    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝    ╚═╝   "
+echo
+echo "Environment: $ENV_NAME"
+echo "Python version: $PYENV_VERSION"
+echo "Location: $(pwd)"
+echo
+echo "Virtual environment '$ENV_NAME' is now active!"
+echo "You can activate it in new shells with: pyenv activate $ENV_NAME"
